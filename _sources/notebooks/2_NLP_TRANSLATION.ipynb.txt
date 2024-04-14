@@ -1,0 +1,117 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Machine Translation using Meta's nllb\n"
+      ],
+      "metadata": {
+        "id": "IDfD6CdYqgh3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "id": "54wzCuRpqVQs"
+      },
+      "outputs": [],
+      "source": [
+        "from transformers.utils import logging\n",
+        "from transformers import pipeline\n",
+        "import torch\n",
+        "logging.set_verbosity_error()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# building translation pipeline\n",
+        "translator = pipeline(\n",
+        "    task=\"translation\",\n",
+        "    model=\"facebook/nllb-200-distilled-600M\",\n",
+        "    torch_dtype=torch.bfloat16\n",
+        ")"
+      ],
+      "metadata": {
+        "id": "qPRp1S0QqgOA"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# lets translate\n",
+        "text = \"My name is Akhil and I live in Bhilai,Chhattisgarh\"\n",
+        "text_translated = translator(\n",
+        "    text,\n",
+        "    src_lang=\"eng_Latn\",\n",
+        "    tgt_lang=\"hin_Deva\"\n",
+        ")\n",
+        "print(text_translated)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QstH6BuNrjQE",
+        "outputId": "d74d8bd8-03d8-43ce-9ba3-f6ddba02005d"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[{'translation_text': 'मेरा नाम अखिलेश है और मैं भिलाई, छत्तीसगढ़ में रहता हूँ।'}]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# lets translate another sentence\n",
+        "text = \"I am studying masters in Hyderabad and I love machine learning subject.\"\n",
+        "text_translated = translator(\n",
+        "    text,\n",
+        "    src_lang=\"eng_Latn\",\n",
+        "    tgt_lang=\"hin_Deva\"\n",
+        ")\n",
+        "print(text_translated)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FGfZ-PF5r6GX",
+        "outputId": "6463dc6d-5262-495a-e9f8-4e4c7ff40d5e"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[{'translation_text': 'मैं हैदराबाद में मास्टर की पढ़ाई कर रही हूं और मुझे मशीन लर्निंग विषय पसंद है।'}]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}

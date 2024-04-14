@@ -1,0 +1,194 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Chatbot using meta's [blenderbot](https://huggingface.co/facebook/blenderbot-400M-distill)"
+      ],
+      "metadata": {
+        "id": "Uq2Iy1WiNY9z"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "_VxJVtAoNPOr"
+      },
+      "outputs": [],
+      "source": [
+        "from transformers.utils import logging\n",
+        "logging.set_verbosity_error()\n",
+        "\n",
+        "from transformers import pipeline"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# two arguments : nlp task and model to be used\n",
+        "chatbot = pipeline(task=\"conversational\", model=\"facebook/blenderbot-400M-distill\")"
+      ],
+      "metadata": {
+        "id": "3ni6yq1bL5-d"
+      },
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Now lets check how responses are for generic questions as input"
+      ],
+      "metadata": {
+        "id": "MXbKYcaPM-gE"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "user_message = \"I am planning to buy a home. What factors should I look for considering I am having a family of 4 people with kids?\""
+      ],
+      "metadata": {
+        "id": "UiPoFyeXMI7D"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# creating conversation object of user message\n",
+        "from transformers import Conversation\n",
+        "\n",
+        "conversation = Conversation(user_message)\n",
+        "print(conversation)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OW4HjBUJNzMs",
+        "outputId": "a3d0dcab-e118-478f-87aa-ab5d0d36ba26"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Conversation id: 708c0efd-15e4-4442-b01f-3de8530c1dd1\n",
+            "user: I am planning to buy a home. What factors should I look for considering I am having a family of 4 people with kids?\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# starting conversation | model's forward pass\n",
+        "conversation = chatbot(conversation)\n",
+        "print(conversation)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0zghoIr6OQf7",
+        "outputId": "be37cb01-a3e1-4805-87a0-e720b11524ef"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Conversation id: 708c0efd-15e4-4442-b01f-3de8530c1dd1\n",
+            "user: I am planning to buy a home. What factors should I look for considering I am having a family of 4 people with kids?\n",
+            "assistant:  Well, if you are looking for a house with a big yard, you might want to look for a bigger house.\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# preparing conversation further | use \"add_message()\" property on conversion object\n",
+        "conversation.add_message(\n",
+        "    {\n",
+        "        \"role\": \"user\",\n",
+        "        \"content\": \"Can you elaborate more on affordability?\"\n",
+        "    }\n",
+        ")\n",
+        "print(conversation)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "WKlkO33uOxK5",
+        "outputId": "b5e5ee9f-774e-416d-e191-7a3b15044e64"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Conversation id: 708c0efd-15e4-4442-b01f-3de8530c1dd1\n",
+            "user: I am planning to buy a home. What factors should I look for considering I am having a family of 4 people with kids?\n",
+            "assistant:  Well, if you are looking for a house with a big yard, you might want to look for a bigger house.\n",
+            "user: Can you elaborate more on affordability?\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# continuing conversation | model's forward pass\n",
+        "conversation = chatbot(conversation)\n",
+        "print(conversation)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mn1b6XMYQMyY",
+        "outputId": "7c64b6dc-41fa-432a-9641-3c13e640e10e"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Conversation id: 708c0efd-15e4-4442-b01f-3de8530c1dd1\n",
+            "user: I am planning to buy a home. What factors should I look for considering I am having a family of 4 people with kids?\n",
+            "assistant:  Well, if you are looking for a house with a big yard, you might want to look for a bigger house.\n",
+            "user: Can you elaborate more on affordability?\n",
+            "assistant:  Well, it depends on how much you want to spend. If you want a big house, you will need a lot of money.\n",
+            "\n"
+          ]
+        }
+      ]
+    }
+  ]
+}

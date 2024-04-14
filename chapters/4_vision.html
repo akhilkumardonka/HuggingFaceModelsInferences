@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Vision &mdash; Open Source HuggingFace Applications  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-gallery.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Object Detection using Meta’s DETR" href="../notebooks/4_CV_ObjectDetection.html" />
+    <link rel="prev" title="Text to Speech" href="../notebooks/3_APR_TTS.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Open Source HuggingFace Applications
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_model_selection.html">Model selection on HF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_nlp.html">Natural Language Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_audio.html">Audio Pattern Recognition</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Computer Vision</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#image-video-tasks">Image &amp; Video tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-notebooks">Coding Notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/4_CV_ObjectDetection.html">Object Detection using Meta’s DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/4_CV_SegmentationAndDepthEstimation.html">Image Segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_multimodal.html">Multimodality</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Source HuggingFace Applications</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Computer Vision</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/4_vision.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="computer-vision">
+<h1>Computer Vision<a class="headerlink" href="#computer-vision" title="Link to this heading"></a></h1>
+<p>We all have witnessed an accelerated research in the field of Computer vision. Major contributions started in the year of 2012, CNNs started to rule
+and ofcourse compute was on parallel made accesible &amp; affordable.</p>
+<section id="image-video-tasks">
+<h2>Image &amp; Video tasks<a class="headerlink" href="#image-video-tasks" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Object Detection :</strong></dt><dd><p>Goal is to detect some predefined objects in an image and put bounding boxes on them (as output image).
+Its has numerous use cases, popularly : Self driving cars to detect various objects on road, in Sports to track objects (eg. ball, player),
+image search, counting the objects like entities in a shopping store or counting visitors or manage crowd.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Image Segmentation :</strong></dt><dd><p>Divides image into segments where each pixel in image is mapped to some object.
+Used in autonomous vehicle to segment roads, editing apps to remove/blur background, medical imaging to segment out anomalies.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Depth Estimation :</strong></dt><dd><p>Predicts the depths as gradients on Image. Used to get 3D representations from 2D Images and volumetric estimatations from object images.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Image to Image :</strong></dt><dd><p>Where input and output both are images, used in image super resolutions, image style transfers, image inpainting where we remove/add
+objects from images, image colorization where we convert black &amp; white images to RGB, etc.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Image to Text :</strong></dt><dd><p>Used in image captioning to describe images in text, Optical character recognition, etc.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="coding-notebooks">
+<h2>Coding Notebooks<a class="headerlink" href="#coding-notebooks" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="../notebooks/4_CV_ObjectDetection.html">
+  <div><img alt="" src="../_images/notebooks_4_CV_ObjectDetection_6_0.png"></div>
+  <div>Object Detection using Meta’s DETR</div>
+</a>
+<a class="reference internal" href="../notebooks/4_CV_SegmentationAndDepthEstimation.html">
+  <div><img alt="" src="../_images/notebooks_4_CV_SegmentationAndDepthEstimation_11_1.png"></div>
+  <div>Image Segmentation</div>
+</a>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks/3_APR_TTS.html" class="btn btn-neutral float-left" title="Text to Speech" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../notebooks/4_CV_ObjectDetection.html" class="btn btn-neutral float-right" title="Object Detection using Meta’s DETR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Akhil Kumar Donka.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

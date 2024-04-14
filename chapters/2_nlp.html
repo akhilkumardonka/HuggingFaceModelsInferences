@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natural Language Processing &mdash; Open Source HuggingFace Applications  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-gallery.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chatbot using meta’s blenderbot" href="../notebooks/2_NLP_CHATBOT.html" />
+    <link rel="prev" title="Model selection on HF" href="1_model_selection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Open Source HuggingFace Applications
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_model_selection.html">Model selection on HF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Natural Language Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nlp-tasks">NLP tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-notebooks">Coding Notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/2_NLP_CHATBOT.html">Chatbot using meta’s blenderbot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/2_NLP_QA.html">Open book information retreival (FAQ) using deepset’s roberta-base-squad2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/2_NLP_TABLE_ANSWER.html">Table Question Answering using Google’s tapas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../notebooks/2_NLP_TRANSLATION.html">Machine Translation using Meta’s nllb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_audio.html">Audio Pattern Recognition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_vision.html">Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_multimodal.html">Multimodality</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Source HuggingFace Applications</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Natural Language Processing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/2_nlp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="natural-language-processing">
+<h1>Natural Language Processing<a class="headerlink" href="#natural-language-processing" title="Link to this heading"></a></h1>
+<p>Lets use HuggingFace Library to perform various NLP tasks using open source models. These tasks are highly related to how humans interact and
+famous Transformer architecture is the heart of all the NLP models. We can take any pretrained models and finetune on our collected dataset.</p>
+<section id="nlp-tasks">
+<h2>NLP tasks<a class="headerlink" href="#nlp-tasks" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Text Feature Extraction :</strong>
+get sentence (sequence of tokens) represented as sequence of numerical vectors which carry some information</p></li>
+<li><p><strong>Mask Filling :</strong>
+missing word prediction, helps you get statistical understanding of the language</p></li>
+<li><p><strong>Question Answering / Chatbot :</strong>
+answer retreival from a load of documents (knowledge base or context or open book), also generating generic answers without context (documents or closed book),
+Open-domain models are not restricted to a specific domain, while closed-domain models are restricted to a specific domain (e.g. legal, medical documents).</p></li>
+<li><p><strong>Sentence Similarity :</strong>
+Tells how close two texts are, input text is converted to a vector embedding which captures a semantic meaning. Used in information retreival (search)
+and clustering. Sentence-transformers library is popularly used for paragraph or document search followed by sentence level search</p></li>
+<li><p><strong>Summarization :</strong>
+Produce compact version of given document/text, either we can extract extract text from given document or we can also generate a new summarized text.
+Used in summarizing research papers or news articles</p></li>
+<li><p><strong>Table Question Answering :</strong>
+Given a dataset (JSON, CSV, SQL DB), convert to pandas dataframe and then either SQL executions or retreival of information from table</p></li>
+<li><p><strong>Text Classification :</strong>
+Assigning labels to text, used in hate speech classification, disaster identification using tweets, assessing grammatical correctness,
+new product/movie sentiment classification using reviews, Assertion &amp; Reasoning</p></li>
+<li><p><strong>Text Generation :</strong>
+Given a small text, generate the next few tokens based on input text context. popular use case is story generation, machine code generation or
+very popularly instruction models like ChatGPT, chatbots with role defined</p></li>
+<li><p><strong>Token Classification :</strong>
+Assigning labels at the word level, used in Named entity recognition to get names places dates etc, Part of speech tagging to get verbs punctuations etc
+Popular application is Information Extraction from Invoices (invoice image first passed through OCR system)</p></li>
+<li><p><strong>Language Translation :</strong>
+One language to another target language machine translation, multilingual models are available, common use case is to process chatbot inferences</p></li>
+<li><p><strong>Zero Shot Classification :</strong>
+Directly working on our application without finetuning or training underlying model again</p></li>
+</ul>
+</section>
+<section id="coding-notebooks">
+<h2>Coding Notebooks<a class="headerlink" href="#coding-notebooks" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<div class="nbsphinx-gallery">
+<a class="reference internal" href="../notebooks/2_NLP_CHATBOT.html">
+  <div><img alt="" src="../_static/nbsphinx-no-thumbnail.svg"></div>
+  <div>Chatbot using meta’s blenderbot</div>
+</a>
+<a class="reference internal" href="../notebooks/2_NLP_QA.html">
+  <div><img alt="" src="../_static/nbsphinx-no-thumbnail.svg"></div>
+  <div>Open book information retreival (FAQ) using deepset’s roberta-base-squad2</div>
+</a>
+<a class="reference internal" href="../notebooks/2_NLP_TABLE_ANSWER.html">
+  <div><img alt="" src="../_static/nbsphinx-no-thumbnail.svg"></div>
+  <div>Table Question Answering using Google’s tapas</div>
+</a>
+<a class="reference internal" href="../notebooks/2_NLP_TRANSLATION.html">
+  <div><img alt="" src="../_static/nbsphinx-no-thumbnail.svg"></div>
+  <div>Machine Translation using Meta’s nllb</div>
+</a>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1_model_selection.html" class="btn btn-neutral float-left" title="Model selection on HF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../notebooks/2_NLP_CHATBOT.html" class="btn btn-neutral float-right" title="Chatbot using meta’s blenderbot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Akhil Kumar Donka.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
