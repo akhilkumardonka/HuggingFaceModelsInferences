@@ -5,9 +5,13 @@ This is my documentation while I was attending the following course by DeepLearn
 
 ## Sphinx Documentation & Deployment on Github Pages
 
-To build documentation, install sphinx in our python environment and follow below steps:
+* Create github repo and enable github pages, branched to **gh-pages** and pointing to **/root**.
+
+* Now clone this repo
+
+To build documentation, install sphinx in your python environment and follow below steps:
 ```
-cd <to workspace containing doc folder>
+cd <to local repo containing doc folder>
 sphinx-build doc _build
 ```
 
@@ -17,3 +21,4 @@ sphinx-build doc _build
 and change pip install or sudo apt install commands according to package requirements
 
 * then commit and push repository, github actions will take care of deployments further
+  
