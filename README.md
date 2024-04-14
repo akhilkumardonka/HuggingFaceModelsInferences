@@ -11,12 +11,9 @@ cd <to workspace containing doc folder>
 sphinx-build doc _build
 ```
 
-Check html page in browser, generated at **/_build.index.html**
+* Check html page in browser, generated at **/_build.index.html**
 
-In case of any additional package installations, navigate to below directory :
-```
-.github/workflows/documentation.yaml
-```
+* In case of any additional package installations, navigate to below directory : **.github/workflows/documentation.yaml**
 and change pip install or sudo apt install commands according to package requirements
 
-then commit and push repository, github actions will take care of deployments further
+* then commit and push repository, github actions will take care of deployments further
